@@ -56,7 +56,7 @@ router.get('/withdraw',ensureAuthenticated,(req,res)=>{
 
 
 router.get('/registerApi',ensureAuthenticated,(req,res)=>{
-    var q = url.parse(adr, true);
+    var q = url.parse(req, true);
     var qdata = q.query;
     User.findOne({email : email}).then((user)=>{
         user.wallets[qdata.walletAddress]=qdata.username;

@@ -8,13 +8,13 @@ var chain0="Avax";
 var chain0Id=43113;
 var chain1="Polygon";
 var chain1Id=80001;
-var ADAddress0 = "0x111b015C545453F64387502Bb9b7B0CC0021D374";
+var ADAddress0 = "0xE1304857B8175123447ceBCED44bffFee94451cE";
 var ADAddress1 = "0xC4D3d08905393487b43C19D540c24C0ab2dC7438";
 var chain="bttc";
 var chainId=1029;
 var payeeAddress = "0xFA97Fbfd62dE543BeCfa31Ad704F500d6826bbFA";
 var registerFees= 0;
-var registerFees2=0.01;
+var registerFees2=0;
 var withdrawFees= 0;
 var userName="";
 var bal;
@@ -387,17 +387,16 @@ async function connectWallet(){
                 document.getElementById("registration").style.display="block"
            }
            else{
-				userName=web3.utils.hexToString(response);
-				document.getElementById("req").style.display="none"
-				document.getElementById("registration").style.display="none"
-				if(window.location.href=="/user/dashboard/"){
-					document.getElementById("data").style.display="block"
-					document.getElementById("uName").innerText= userName;
-					document.getElementById("uName").onclick= copyLink;
-					document.getElementById("qrcode").innerHTML="";
-					new QRCode(document.getElementById("qrcode"), window.location.origin+"/payment/"+userName);
-				}
-				
+            userName=web3.utils.hexToString(response);
+            document.getElementById("req").style.display="none"
+            document.getElementById("registration").style.display="none"
+            
+            document.getElementById("data").style.display="block"
+            document.getElementById("uName").innerText= userName;
+			document.getElementById("uName").onclick= copyLink;
+			
+            new QRCode(document.getElementById("qrcode"), window.location.origin+"/payment/"+userName);
+
            }
         }
         
@@ -457,7 +456,7 @@ async function register(){
 			var email=document.getElementById('em').innerText;
 		// response = await Contract.methods.register(accountAddress).call()
 			//console.log(Name,email)
-			var res=await Contract.methods.register(web3.utils.fromAscii(val),web3.utils.fromAscii(Name)).send({'from':accountAddress,'value':web3.utils.toWei(registerFees).toString()});
+			var res=await Contract.methods.register(web3.utils.fromAscii(val),web3.utils.fromAscii(Name)).send({'from':accountAddress,'value':'0'});
 			console.log(res)
 			var xhttp = new XMLHttpRequest();
 			xhttp.open("GET", "/users/registerApi?hash="+res.transactionHash+"&username="+val+"&name="+Name+"&email="+email+"&walletAddress="+accountAddress, true);
@@ -478,8 +477,8 @@ async function register(){
 		// response = await Contract.methods.register(accountAddress).call()
 			//console.log(Name,email)
 			var crossContract=new web3.eth.Contract(ADCrossABI,ADAddress1);
-			var res=await crossContract.methods.registerExternal(web3.utils.fromAscii(val),web3.utils.fromAscii(Name)).send({'from':accountAddress,'value':web3.utils.toWei(registerFees2).toString()});
-			console.log(res)
+			var res=await Contract.methods.register(web3.utils.fromAscii(val),web3.utils.fromAscii(Name)).send({'from':accountAddress,'value':(web3.utils.toWei(0)).toString()});
+        console.log(res)
 			var xhttp = new XMLHttpRequest();
 			xhttp.open("GET", "/users/registerApi?hash="+res.transactionHash+"&username="+val+"&name="+Name+"&email="+email+"&walletAddress="+accountAddress, true);
 			xhttp.send();
@@ -547,7 +546,7 @@ async function payAmt(){
 			const params = {
 				'fromTokenAddress': '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
 				'toTokenAddress': '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
-				'amount': '10000000000000000000', // source amount
+				'amount': web3.utils.toWei(val).toString(), // source amount
 				'fromTokenChainId': "80001", // Mumbai
 				'toTokenChainId': "43113", // Fuji
 				'widgetId': 0, // get your unique wdiget id by contacting us on Telegram
@@ -580,8 +579,8 @@ async function payAmt(){
 					fromTokenAddress: params.fromTokenAddress,
 					toTokenAddress: params.toTokenAddress,
 					slippageTolerance: 0.5,
-					senderAddress: "<sender-address>",
-					receiverAddress: "<receiver-address>",
+					senderAddress: accountAddress,
+					receiverAddress: ADAddress0,
 					widgetId: params.widgetId
 				})})
 				return res.data;
