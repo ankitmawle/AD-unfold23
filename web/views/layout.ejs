@@ -1,0 +1,116 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel = "icon" type = "image/png" href = "img/download.png" sizes="16x16">
+      <link rel="stylesheet" href="/css/components.css">
+      <link rel="stylesheet" href="/css/icons.css">
+      <link rel="stylesheet" href="/css/responsee.css">
+      <link rel="stylesheet" href="/owl-carousel/owl.carousel.css">
+      <link rel="stylesheet" href="/owl-carousel/owl.theme.css">
+      <link rel="stylesheet" href="style.css" />
+      <!-- CUSTOM STYLE -->      
+      <link rel="stylesheet" href="/css/template-style.css">
+      <link href="https://fonts.googleapis.com/css?family=Barlow:100,300,400,700,800&amp;subset=latin-ext" rel="stylesheet">  
+      
+      <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+      <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
+      <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+      <script type="text/javascript" src="/js/jquery-ui.min.js"></script>   
+      <script type="text/javascript" src="/js/ad.js"></script>    
+      <script type="text/javascript" src="/js/qrcode.min.js"></script> .
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qr-scanner/1.4.2/qr-scanner.umd.min.js"></script>
+
+<title>AD- Payment Gateway</title>
+</head>
+<body onload="start()" class="size-1520 primary-color-red background-dark">
+    <!-- PREMIUM FEATURES BUTTON >
+      <a  class="hide-s" href="/index.html" style="background:black;position:fixed;top:120px;right:0px;z-index:10;"><img style="width:10vw;height:10vh" src="/img/download.png" alt=""></a>
+    <!-- HEADER -->
+    <header class="grid" id= "head">
+      <!-- Top Navigation -->
+      <nav class="s-12 grid background-none background-primary-hightlight">
+         <!-- logo -->
+         <a href="/about-us" class="m-12 l-3">
+            <img style="padding-top: 30px; height: 100px;padding-left:150px " src="/img/download.png">
+         </a>
+         <div class="top-nav s-12 l-9"> 
+            <ul class="top-ul right chevron">
+              <li><a onclick="connectWallet()">My QR</a></li>
+              <li><a onclick="Qr()">Send Money</a></li>
+              <li><a onclick="uName()">Withdraw Money</a></li>
+              <li><a onclick="history()">History</a></li>
+              <li><a> <select onchange="changeChain()" name="Select Chain" id="chain">
+                <option value="0">Avax Fuji testnet</option>
+                <option value="1">Polygon Mumbai testnet</option>
+              </select></a></li>
+              <li onclick="connectWallet()"><a id="wallet" >Connect Wallet</a></li>
+            </ul>
+         </div>
+      </nav>
+    </header>
+    <script>
+     
+      function inIframe () {
+      try {
+          return window.location !== window.parent.location;
+      } catch (e) {
+          return true;
+      }
+  }
+  
+      function start(){
+          console.log("dasd");
+         
+      if( window.location !== window.parent.location){
+          console.log("asd")
+         
+         parent.parent.window.location.reload();
+      } 
+      }
+  </script>
+    <script type="text/javascript" src="/js/responsee.js"></script>
+    <script type="text/javascript" src="/owl-carousel/owl.carousel.js"></script>
+    <script type="text/javascript" src="/js/template-scripts.js"></script>
+
+
+    <div style="width:100vw;display:flex;justify-content: center">
+
+      <button id="sdk-trigger-id">trigger button</button>
+      <div class="mainBody">
+
+        <%- body %>
+      </div>
+    </div>
+
+<footer style="position:sticky; bottom:0" id="foo">
+  <div  style="position:fixed; bottom:0; background:black"  class="s-12 text-center "  >
+    <p class="text-size-15">Payee</p>
+
+  </div>
+
+</footer>
+</body>
+</html>

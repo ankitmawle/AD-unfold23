@@ -1,0 +1,14 @@
+{
+  "name": "@pushprotocol/uiembed",
+  "version": "0.2.0",
+  "type": "commonjs",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {}
+}

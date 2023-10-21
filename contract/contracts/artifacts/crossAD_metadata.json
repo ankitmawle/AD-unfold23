@@ -1,0 +1,257 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_admin",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_wormholeAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_avaxAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "_sender",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "_receiver",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transactionSent",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "I_DEPOSIT_MESSAGE_SELECTOR",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "changeAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAdmin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getRegisterFees",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "payload",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes[]",
+						"name": "",
+						"type": "bytes[]"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint16",
+						"name": "sourceChain",
+						"type": "uint16"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "deliveryHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "receiveWormholeMessages",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_username",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_name",
+						"type": "bytes32"
+					}
+				],
+				"name": "registerExternal",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_registerFees",
+						"type": "uint256"
+					}
+				],
+				"name": "setRegisterFees",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "viewFeeBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawFees",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "wormholeRelayer",
+				"outputs": [
+					{
+						"internalType": "contract IWormholeRelayer",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/crossAD.sol": "crossAD"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/crossAD.sol": {
+			"keccak256": "0x281c966fa8afa39962512b8720e97af98cd731e2ffb77e3e70215fcdee47361b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cf3eb07d561775cd476105b7eab920a831b1ac1f23ea9b2a37abfcdddbcb0a29",
+				"dweb:/ipfs/Qmc77NdnqvCcK1bxTPBa8FXfHYuWWr8BSFW5tgRUXVyuMh"
+			]
+		},
+		"https://github.com/wormhole-foundation/wormhole-solidity-sdk/blob/456f69f1912fac93f21845f71df42128d6b755f6/src/interfaces/IWormholeReceiver.sol": {
+			"keccak256": "0x58d827f8013a3f91f586151b94d99e1a648933e7ab5dc89a897d6e6cfe182b32",
+			"license": "Apache 2",
+			"urls": [
+				"bzz-raw://e09d8e7bf7d2fc15639294add6ea5c2f0181d07be2903274a6c08e62111d3daa",
+				"dweb:/ipfs/QmPYcBppMxeMwbGkZcTEcFiZqVMcBBFCgZX1ySWQde9MNc"
+			]
+		},
+		"https://github.com/wormhole-foundation/wormhole-solidity-sdk/blob/456f69f1912fac93f21845f71df42128d6b755f6/src/interfaces/IWormholeRelayer.sol": {
+			"keccak256": "0xd4d62941044658d69f8b3c5c8065d1c5a3cb2b3f08c27610d6eee20fbe3ea183",
+			"license": "Apache 2",
+			"urls": [
+				"bzz-raw://4afb03f09d1d030d50f35a69ec9a19e96d310e119ce59c791f06c397ecc3688b",
+				"dweb:/ipfs/QmTQBCBFhAq84MvSqq738jis5fTs6bGpCPaeC1WLwrJUkx"
+			]
+		}
+	},
+	"version": 1
+}

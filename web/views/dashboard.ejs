@@ -1,0 +1,188 @@
+<p style="color:rgb(0, 0, 0)">  Welcome <%= user.name %> to Payee </p>
+<div id="walletSetup" style="display:block">
+  <p id="req">Please Connect Your Wallet</p>
+  <div style="display:none" id="registration">
+      <h3 style="color:black">Please Register this Wallet Address with us by submitting a unique username for this wallet</h3>
+        
+    <div class="wrap-input100 validate-input" data-validate="Enter password">
+        <input id="uname" class="input100" type="text" name="username" placeholder="Username"  value=""/>
+        <span class="focus-input100" data-placeholder="&#x270E;"></span>
+    </div>
+
+    <div onclick="register()" class="container-login100-form-btn m-t-32">
+      <button type="submit" class="login100-form-btn">
+          Register
+      </button>
+  </div>
+
+
+  </div>
+  <div id="data" style="display:none; text-align: center;">
+    Use Following Username to receive payments to this account or Scan the below code 
+
+    <h2 id="uName" style="color:black"></h2>
+    <div  style="align-self: center;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;margin:20px" 
+      id="qrcode"></div>
+  </div>
+</div>
+
+
+
+<div id="QR" style="display:none">
+  <div style="margin:30px">
+
+    Fill In the UserName of receiver or scan qr using camera 
+
+    <div class="wrap-input100 validate-input" data-validate="Enter password">
+      <input id="payname" class="input100" type="text" name="username" placeholder="Username"  value=""/>
+      <span class="focus-input100" data-placeholder="&#x270E;"></span>
+  </div>
+
+  <div onclick="pay()" class="container-login100-form-btn m-t-32">
+    <button type="submit" class="login100-form-btn">
+        pay
+    </button>
+
+  </div>
+  <video style="max-width: 100%;" id="qrVideo"></video>
+</div>
+</div>
+<div id="UName" style="display:none">
+    <div style="color:black" id="UBalance"></div>
+    <div id="pay" style="display:block">
+        Amount to Withdraw <br>
+        <p id="withdrawalFees"> </p>AVAX will be deducted as fees
+
+        <div class="wrap-input100 validate-input" data-validate="Enter password">
+            <input id="Wamt" class="input100" type="number" min="1" name="0" placeholder="0"  value=""/>
+            <span style="left:-15px" class="focus-input100" data-placeholder="AVAX"></span>
+        </div>
+
+        <div onclick="WAmt()" class="container-login100-form-btn m-t-32">
+            <button type="submit" class="login100-form-btn">
+                Withdraw
+            </button>
+        </div>
+    </div>
+</div>
+<div id="History" style="display:none">
+
+    <select id="myselect" onchange="change_myselect(this.value)">
+        <option value="">Choose an option:</option>
+        <option value="sent">Sent</option>
+        <option value="received">Received</option>
+      </select>
+      
+      <p id="demo"></p>
+      
+      <script>
+      function change_myselect(sel) {        
+        var _userName = document.getElementById("uName").innerText;
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function() {
+
+          myObj = JSON.parse(this.responseText);
+            console.log(myObj)
+          text = "<table border='1'>"
+          text+="<tr><th>Sender</th><th>Receiver</th><th>Amount</th><th>Transaction Hash</th></tr>"  
+          for (x of myObj[sel]) {
+            text += "<tr><td>"+x.sender+"</td><td>"+x.receiver+"</td><td>"+x.amount+"</td><td>"+x.hash+"</td></tr>"
+          }
+          text += "</table>"    
+          document.getElementById("demo").innerHTML = text;
+        }
+        xmlhttp.open("GET", "./history/"+_userName);
+        xmlhttp.send();
+      }
+      </script>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+  
+  
+
+function scanStart(){    
+var videoElem=document.getElementById("qrVideo");
+
+  const qrScanner = new QrScanner(
+  videoElem,
+  result => qrRes(result.data),
+  { /* your options or returnDetailedScanResult: true if you're not specifying any other options */ },
+);
+
+try{qrScanner.start();}
+catch(err){
+  alert("camera not found");
+}
+ }
+
+function qrRes(res){
+  const myUrl = new URL(res)
+
+  if(window.location.origin==myUrl['origin'])
+  {window.location=res}
+  else{alert("Not a Payee QR")}
+} 
+
+
+function Qr(){
+if(!checkWalletConnect()) {
+  alert("Please Connect Wallet First");
+  return
+}
+scanStart();
+
+document.getElementById("walletSetup").style.display="none";
+document.getElementById("QR").style.display="block";
+document.getElementById("UName").style.display="none";
+document.getElementById("History").style.display="none";
+
+}
+
+function uName(){
+if(!checkWalletConnect()) {
+  alert("Please Connect Wallet First");
+  return
+}
+getBalance();
+document.getElementById("walletSetup").style.display="none";
+document.getElementById("QR").style.display="none";
+document.getElementById("UName").style.display="block";
+document.getElementById("History").style.display="none";
+}
+
+function history(){
+if(!checkWalletConnect()) {
+  alert("Please Connect Wallet First");
+  return
+}
+
+document.getElementById("walletSetup").style.display="none";
+document.getElementById("QR").style.display="none";
+document.getElementById("UName").style.display="none";
+document.getElementById("History").style.display="block";
+}
+
+
+async function start(){
+  await connectWallet()   
+  if( window.location !== window.parent.location){
+        console.log("asd")
+       
+       parent.parent.window.location.reload();
+    }
+    }
+
+</script>
+
+<div id="nn" style="display: none;"><%= user.name %></div>
+<div id="em" style="display: none;"><%= user.email %></div>

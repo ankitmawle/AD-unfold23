@@ -1,0 +1,136 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel = "icon" type = "image/png" href = "img/download.png" sizes="16x16">
+      <link rel="stylesheet" href="/css/components.css">
+      <link rel="stylesheet" href="/css/icons.css">
+      <link rel="stylesheet" href="/css/responsee.css">
+      <link rel="stylesheet" href="/owl-carousel/owl.carousel.css">
+      <link rel="stylesheet" href="/owl-carousel/owl.theme.css">
+      <!-- CUSTOM STYLE -->      
+      <link rel="stylesheet" href="/css/template-style.css">
+      <link href="https://fonts.googleapis.com/css?family=Barlow:100,300,400,700,800&amp;subset=latin-ext" rel="stylesheet">  
+      
+      <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+      <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
+      <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+      <script type="text/javascript" src="/js/jquery-ui.min.js"></script>   
+      <script type="text/javascript" src="/js/ad.js"></script>    
+      <script type="text/javascript" src="/js/qrcode.min.js"></script> 
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qr-scanner/1.4.2/qr-scanner.umd.min.js"></script>
+
+<title>AD- Payment Gateway</title>
+</head>
+<body  class="size-1520 primary-color-red background-dark">
+    <!-- PREMIUM FEATURES BUTTON >
+      <a  class="hide-s" href="/index.html" style="background:black;position:fixed;top:120px;right:0px;z-index:10;"><img style="width:10vw;height:10vh" src="/img/download.png" alt=""></a>
+    <!-- HEADER -->
+
+    <script type="text/javascript" src="/js/responsee.js"></script>
+    <script type="text/javascript" src="/owl-carousel/owl.carousel.js"></script>
+    <script type="text/javascript" src="/js/template-scripts.js"></script>
+
+<style>
+    
+
+    .cc {
+        width: 100%;
+        min-height: 100vh;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        z-index: 1;
+    }
+    </style>
+    <div id="abc"  class="limiter background-dark">
+        
+        <div class="cc background-dark" >
+            <div class="wrap-login100 p-t-30 p-b-50">
+                <span class="login100-form-title p-b-10">
+                    <br>
+                    Registration Form
+                </span>
+                <%- include ('./partials/messages') %>
+                <form action="/register" method="POST" class="login100-form validate-form p-b-33 p-t-5">
+                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                        <input class="input100" type="text" name="name" placeholder="Full Name" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                    </div>
+    
+                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                        <input class="input100" type="email" name="email" placeholder="Email"  value="<%= typeof email != 'undefined' ? email : '' %>"/>
+                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                    </div>
+    
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="password" placeholder="Password"  value="<%= typeof password != 'undefined' ? password : '' %>"/>
+                        <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                    </div>
+    
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="password2" placeholder="Confirm Password"  value="<%= typeof password2 != 'undefined' ? password2 : '' %>"/>
+                        <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                    </div>
+    
+    
+                    <div class="container-login100-form-btn m-t-32">
+                        <button type="submit" class="login100-form-btn">
+                            Register
+                        </button>
+                    </div>
+                    <div id="dropDownSelect1" style="color: rgb(0, 0, 0);text-align: center;"><br><a href="/login">Already have an account</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("abc").onload=function() {start()}
+        function start(){
+            console.log("da")
+            document.getElementById("foo").style.display="none";
+        }
+        </script>
+
+<footer style="position:sticky; bottom:0" id="foo">
+    <div  style="position:fixed; bottom:0; background:black"  class="s-12 text-center "  >
+      <p class="text-size-15">Payee</p>
+  
+    </div>
+  
+  </footer>
+  </body>
+  </html>
